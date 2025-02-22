@@ -1,0 +1,6 @@
+[package]
+name = "ex5_christmas_carol"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
