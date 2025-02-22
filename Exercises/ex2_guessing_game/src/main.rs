@@ -6,7 +6,8 @@ fn main() {
     println!("Welcome to the Guessing Game!\n");
 
     // Generate a random number.
-    let secret_number = rand::rng().random_range(1..=100);
+    const MAX_RANDOM_NUMBER: u32 = 100;
+    let secret_number: u32 = rand::rng().random_range(1..=MAX_RANDOM_NUMBER);
 
     loop {
         // Read user input and convert it into an integer.
