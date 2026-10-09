@@ -13,13 +13,26 @@ cargo build --workspace
 cargo run -p ex1_hello_world
 ```
 
-Available packages:
+## Exercise roadmap
 
-- `ex1_hello_world`
-- `ex2_guessing_game`
-- `ex3_temperature_converter`
-- `ex4_fibonacci_nth`
-- `ex5_christmas_carol`
+### Existing exercises
+
+1. `ex1_hello_world` — Hello World
+2. `ex2_guessing_game` — guessing game
+3. `ex3_temperature_converter` — temperature converter
+4. `ex4_fibonacci_nth` — *n*th Fibonacci number
+5. `ex5_christmas_carol` — lyrics of “The Twelve Days of Christmas”
+
+### Planned exercises, in increasing difficulty
+
+6. Menu-driven command-line calculator — `enum`, `match`, input parsing, and `Result`
+7. Word counter for files — file reading, iterators, and `HashMap`
+8. Hangman — state management, collections, and tests for game rules
+9. JSON-backed to-do list — `struct`, `serde`, and file persistence
+10. CSV expense analyzer — parsing, modules, and tests
+11. Text search across files, like a small `grep` — CLI arguments, filesystem, and error handling
+12. Client for a web API — HTTP requests, JSON, and asynchronous code
+13. REST server for the to-do list — routing, HTTP, and persistence
 
 To pass arguments to an exercise, add `--` after the package name, for example:
 
