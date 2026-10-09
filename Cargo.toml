@@ -1,0 +1,9 @@
+[workspace]
+members = [
+    "Exercises/ex1_hello_world",
+    "Exercises/ex2_guessing_game",
+    "Exercises/ex3_temperature_converter",
+    "Exercises/ex4_fibonacci_nth",
+    "Exercises/ex5_christmas_carol",
+]
+resolver = "3"
