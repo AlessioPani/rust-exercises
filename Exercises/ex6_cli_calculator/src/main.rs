@@ -35,7 +35,7 @@ fn main() {
     loop {
         operation.clear();
 
-        print!("\nSelect your operation: ");
+        print!("\n=> Select your operation: ");
         io::stdout().flush().expect("Failed to flush stdout");
 
         io::stdin()
@@ -68,20 +68,24 @@ fn main() {
             }
         };
 
-        println!("\nThe result is {result}");
+        println!("\n=> The result is {result}");
     }
 }
 
 /// Displays the available operations and their selection codes.
 fn print_menu() {
-    println!("Welcome to the Command-Line calculator");
-    println!("1: Sum ");
-    println!("2: Substraction");
-    println!("3: Multiplication");
-    println!("4: Division");
-    println!("5: Square N");
-    println!("6: Power N");
-    println!("0: Quit");
+    println!("\n|-----------------------------------------------|");
+    println!("| Welcome to the Command-Line calculator        |");
+    println!("|-----------------------------------------------|");
+    println!("| 1: Sum                                        |");
+    println!("| 2: Substraction                               |");
+    println!("| 3: Multiplication                             |");
+    println!("| 4: Division                                   |");
+    println!("| 5: Square N                                   |");
+    println!("| 6: Power N                                    |");
+    println!("|-----------------------------------------------|");
+    println!("| 0: Quit                                       |");
+    println!("|-----------------------------------------------|");
 }
 
 /// Reads two values and returns their sum.
@@ -110,13 +114,13 @@ fn multiply() -> f64 {
 
 /// Reads a dividend and a non-zero divisor, then returns their quotient.
 fn divide() -> f64 {
-    let dividend: f64 = read_number("\nInsert the first number: ");
-    let mut divisor: f64 = read_number("\nInsert the second number: ");
+    let dividend: f64 = read_number("\nInsert the dividend: ");
+    let mut divisor: f64 = read_number("\nInsert the divisor: ");
 
     // Require a non-zero divisor before performing the division.
     while divisor == 0 as f64 {
         println!("Divisor cannot be 0: insert another number");
-        divisor = read_number("\nInsert the second number:");
+        divisor = read_number("\nInsert the divisor: ");
     }
 
     dividend / divisor
@@ -130,7 +134,7 @@ fn square_n() -> f64 {
     // Validate the inputs to ensure the result is a real-valued root.
     while base < 0 as f64 {
         println!("Base cannot be negative for real values");
-        base = read_number("Insert the base");
+        base = read_number("Insert the base: ");
     }
 
     while exponent <= 0 as f64 {
