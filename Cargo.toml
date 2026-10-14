@@ -5,6 +5,7 @@ members = [
     "Exercises/ex3_temperature_converter",
     "Exercises/ex4_fibonacci_nth",
     "Exercises/ex5_christmas_carol", 
-    "Exercises/ex6_cli_calculator",
+    "Exercises/ex6_cli_calculator", 
+    "Exercises/ex7_number_lab",
 ]
 resolver = "3"
