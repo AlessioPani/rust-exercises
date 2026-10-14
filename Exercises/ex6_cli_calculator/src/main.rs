@@ -68,7 +68,7 @@ fn main() {
             }
         };
 
-        println!("The result is {result}");
+        println!("\nThe result is {result}");
     }
 }
 
@@ -87,7 +87,7 @@ fn print_menu() {
 /// Reads two values and returns their sum.
 fn add() -> f64 {
     let a: f64 = read_number("\nInsert the first number: ");
-    let b: f64 = read_number("\nInsert the second number: ");
+    let b: f64 = read_number("Insert the second number: ");
 
     a + b
 }
@@ -95,7 +95,7 @@ fn add() -> f64 {
 /// Reads two values and returns their difference.
 fn substract() -> f64 {
     let a: f64 = read_number("\nInsert the first number: ");
-    let b: f64 = read_number("\nInsert the second number: ");
+    let b: f64 = read_number("Insert the second number: ");
 
     a - b
 }
@@ -103,7 +103,7 @@ fn substract() -> f64 {
 /// Reads two values and returns their product.
 fn multiply() -> f64 {
     let a: f64 = read_number("\nInsert the first number: ");
-    let b: f64 = read_number("\nInsert the second number: ");
+    let b: f64 = read_number("Insert the second number: ");
 
     a * b
 }
@@ -125,7 +125,7 @@ fn divide() -> f64 {
 /// Reads a non-negative base and positive root degree, then returns the nth root.
 fn square_n() -> f64 {
     let mut base: f64 = read_number("\nInsert the base: ");
-    let mut exponent: f64 = read_number("\nInsert the root degree: ");
+    let mut exponent: f64 = read_number("Insert the root degree: ");
 
     // Validate the inputs to ensure the result is a real-valued root.
     while base < 0 as f64 {
@@ -144,7 +144,7 @@ fn square_n() -> f64 {
 /// Reads a base and non-negative exponent, then returns the base raised to that power.
 fn power_n() -> f64 {
     let base: f64 = read_number("\nInsert the base: ");
-    let mut exponent: f64 = read_number("\nInsert the exponent: ");
+    let mut exponent: f64 = read_number("Insert the exponent: ");
 
     // Require a non-negative exponent for this operation.
     while exponent < 0 as f64 {
