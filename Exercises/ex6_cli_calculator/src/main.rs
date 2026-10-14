@@ -1,5 +1,6 @@
-use std::io;
+use std::io::{self, Write};
 
+// Represents the operations available through the command-line interface.
 enum Operation {
     Add,
     Substract,
@@ -30,10 +31,12 @@ fn main() {
 
     let mut operation: String = String::new();
 
+    // Process operations until the user selects the quit option.
     loop {
         operation.clear();
 
-        println!("\nSelect your operation: ");
+        print!("\nSelect your operation: ");
+        io::stdout().flush().expect("Failed to flush stdout");
 
         io::stdin()
             .read_line(&mut operation)
@@ -42,6 +45,7 @@ fn main() {
         let operation: u8 = match operation.trim().parse() {
             Ok(0) => {
                 println!("Goodbye");
+                // Exit the application after the user selects the quit option.
                 return;
             }
             Ok(code) => code,
@@ -68,6 +72,7 @@ fn main() {
     }
 }
 
+/// Displays the available operations and their selection codes.
 fn print_menu() {
     println!("Welcome to the Command-Line calculator");
     println!("1: Sum ");
@@ -79,6 +84,7 @@ fn print_menu() {
     println!("0: Quit");
 }
 
+/// Reads two values and returns their sum.
 fn add() -> f64 {
     let a: f64 = read_number("\nInsert the first number: ");
     let b: f64 = read_number("\nInsert the second number: ");
@@ -86,6 +92,7 @@ fn add() -> f64 {
     a + b
 }
 
+/// Reads two values and returns their difference.
 fn substract() -> f64 {
     let a: f64 = read_number("\nInsert the first number: ");
     let b: f64 = read_number("\nInsert the second number: ");
@@ -93,6 +100,7 @@ fn substract() -> f64 {
     a - b
 }
 
+/// Reads two values and returns their product.
 fn multiply() -> f64 {
     let a: f64 = read_number("\nInsert the first number: ");
     let b: f64 = read_number("\nInsert the second number: ");
@@ -100,10 +108,12 @@ fn multiply() -> f64 {
     a * b
 }
 
+/// Reads a dividend and a non-zero divisor, then returns their quotient.
 fn divide() -> f64 {
     let dividend: f64 = read_number("\nInsert the first number: ");
     let mut divisor: f64 = read_number("\nInsert the second number: ");
 
+    // Require a non-zero divisor before performing the division.
     while divisor == 0 as f64 {
         println!("Divisor cannot be 0: insert another number");
         divisor = read_number("\nInsert the second number:");
@@ -112,10 +122,12 @@ fn divide() -> f64 {
     dividend / divisor
 }
 
+/// Reads a non-negative base and positive root degree, then returns the nth root.
 fn square_n() -> f64 {
     let mut base: f64 = read_number("\nInsert the base: ");
     let mut exponent: f64 = read_number("\nInsert the root degree: ");
 
+    // Validate the inputs to ensure the result is a real-valued root.
     while base < 0 as f64 {
         println!("Base cannot be negative for real values");
         base = read_number("Insert the base");
@@ -129,10 +141,12 @@ fn square_n() -> f64 {
     base.powf(1.0 / exponent)
 }
 
+/// Reads a base and non-negative exponent, then returns the base raised to that power.
 fn power_n() -> f64 {
     let base: f64 = read_number("\nInsert the base: ");
     let mut exponent: f64 = read_number("\nInsert the exponent: ");
 
+    // Require a non-negative exponent for this operation.
     while exponent < 0 as f64 {
         println!("Exponent cannot be negative");
         exponent = read_number("\nInsert the exponent: ");
@@ -141,10 +155,16 @@ fn power_n() -> f64 {
     base.powf(exponent)
 }
 
+/// Prompts for input and returns it as a floating-point value.
+///
+/// Repeats the prompt after invalid numeric input.
 fn read_number(message: &str) -> f64 {
-    println!("{}", message);
+    print!("{}", message);
+    io::stdout().flush().expect("Failed to flush stdout");
+
     let mut number: String = String::new();
 
+    // Continue prompting until the input parses as a floating-point value.
     loop {
         number.clear();
 
