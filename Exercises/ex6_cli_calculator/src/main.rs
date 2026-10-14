@@ -44,7 +44,7 @@ fn main() {
 
         let operation: u8 = match operation.trim().parse() {
             Ok(0) => {
-                println!("Goodbye");
+                println!("\nGoodbye!");
                 // Exit the application after the user selects the quit option.
                 return;
             }
@@ -163,13 +163,13 @@ fn power_n() -> f64 {
 ///
 /// Repeats the prompt after invalid numeric input.
 fn read_number(message: &str) -> f64 {
-    print!("{}", message);
-    io::stdout().flush().expect("Failed to flush stdout");
-
     let mut number: String = String::new();
 
     // Continue prompting until the input parses as a floating-point value.
     loop {
+        print!("{}", message);
+        io::stdout().flush().expect("Failed to flush stdout");
+
         number.clear();
 
         io::stdin()
