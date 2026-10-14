@@ -1,5 +1,7 @@
 use std::io::{self, Write};
 
+use colored_text::Colorize;
+
 // Represents the operations available through the command-line interface.
 enum Operation {
     Add,
@@ -33,7 +35,9 @@ fn main() {
 
     // Process operations until the user selects the quit option.
     loop {
-        operation.clear();
+        // Truncate the buffer because Colorize::clear() returns a StyledText value.
+        // Replace operation.clear() or String::clear(&mut operation)
+        operation.truncate(0);
 
         print!("\n=> Select your operation: ");
         io::stdout().flush().expect("Failed to flush stdout");
@@ -50,7 +54,7 @@ fn main() {
             }
             Ok(code) => code,
             _ => {
-                println!("Insert a valid op code: please try again!");
+                println!("{}", "Insert a valid op code: please try again!".red());
                 continue;
             }
         };
@@ -63,7 +67,7 @@ fn main() {
             Ok(Operation::SquareN) => square_n(),
             Ok(Operation::PowerN) => power_n(),
             Err(_) => {
-                println!("Invalid operation code: try again!");
+                println!("{}", "Invalid operation code: try again!".red());
                 continue;
             }
         };
@@ -119,7 +123,7 @@ fn divide() -> f64 {
 
     // Require a non-zero divisor before performing the division.
     while divisor == 0 as f64 {
-        println!("Divisor cannot be 0: insert another number");
+        println!("{}", "Divisor cannot be 0: insert another number".red());
         divisor = read_number("\nInsert the divisor: ");
     }
 
@@ -133,12 +137,12 @@ fn square_n() -> f64 {
 
     // Validate the inputs to ensure the result is a real-valued root.
     while base < 0 as f64 {
-        println!("Base cannot be negative for real values");
+        println!("{}", "Base cannot be negative for real values".red());
         base = read_number("Insert the base: ");
     }
 
     while exponent <= 0 as f64 {
-        println!("Root degree cannot be negative or zero");
+        println!("{}", "Root degree cannot be negative or zero".red());
         exponent = read_number("\nInsert the root degree: ");
     }
 
@@ -152,7 +156,7 @@ fn power_n() -> f64 {
 
     // Require a non-negative exponent for this operation.
     while exponent < 0 as f64 {
-        println!("Exponent cannot be negative");
+        println!("{}", "Exponent cannot be negative".red());
         exponent = read_number("\nInsert the exponent: ");
     }
 
@@ -170,7 +174,9 @@ fn read_number(message: &str) -> f64 {
         print!("{}", message);
         io::stdout().flush().expect("Failed to flush stdout");
 
-        number.clear();
+        // Truncate the buffer because Colorize::clear() returns a StyledText value.
+        // Replace operation.clear() or String::clear(&mut operation)
+        number.truncate(0);
 
         io::stdin()
             .read_line(&mut number)
@@ -179,7 +185,7 @@ fn read_number(message: &str) -> f64 {
         match number.trim().parse() {
             Ok(value) => return value,
             Err(_) => {
-                println!("Insert a valid value: please try again!");
+                println!("{}", "Insert a valid value: please try again!".red());
                 continue;
             }
         };

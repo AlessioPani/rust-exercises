@@ -21,7 +21,7 @@ To pass arguments to a program, add `--` after the package name, for example: `c
 
 ## Exercise roadmap
 
-Exercises 1–5 already exist. The remaining exercises are proposals, listed in a suggested order. A project can be split into multiple binaries, modules, or crates when appropriate.
+Exercises 1–6 already exist. The remaining exercises are proposals, listed in a suggested order. A project can be split into multiple binaries, modules, or crates when appropriate.
 
 ### Fundamentals and control flow
 
